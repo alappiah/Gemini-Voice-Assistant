@@ -56,4 +56,19 @@ flutter run
  ├── screens
  │   ├── home_page.dart 
 ```
+# Disclaimer
+
+## Context Awareness & API Usage
+
+The assistant maintains a **short-term memory** by storing the last few exchanges (default: `19` exchanges). This allows for more natural conversations but comes with trade-offs:
+
+⚠️ **Increased API Usage** – Sending conversation history with each request increases the amount of data processed by the API, leading to **higher costs** and **potential rate limits**.
+
+⚠️ **Performance Impact** – Large context history can cause **slower response times**, as more data is sent and processed.
+
+## Optimization Tips:
+* **Prune redundant messages** – Keep only relevant exchanges to maintain context efficiently.
+* **Monitor API quota** – If you hit rate limits (`429` errors), consider lowering the history size or implementing request delays.
+* **Clear conversation history** – If you're experiencing rate limits, clearing the conversation history can help significantly reduce API usage since subsequent requests will only include the current message without previous context.
+
 
